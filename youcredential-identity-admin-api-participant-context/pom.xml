@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.identity</groupId>
   <artifactId>youcredential-identity-admin-api-participant-context</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3.0</version>
   <name>linkwallet-extention-participant-context-api</name>
   <description>linkwallet-extention-participant-context-api</description>
   
@@ -24,13 +24,13 @@
        <dependency>
         <groupId>org.youcredential.identity</groupId>
         <artifactId>youcredential-identity-admin-api-main-configuration</artifactId>  
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.3.0</version>
       </dependency>        
 <!--    implementation(project(":extensions:api:identity-api:validators:participant-context-validators"))-->
        <dependency>
         <groupId>org.youcredential.identity</groupId>
         <artifactId>youcredential-identity-admin-lib-validator-participant-context</artifactId>   
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.3.0</version>
       </dependency>        
 <!--    implementation(libs.edc.spi.validator)-->
     

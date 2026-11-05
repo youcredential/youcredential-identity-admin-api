@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.identity</groupId>
   <artifactId>youcredential-identity-admin-api-keypair</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3.0</version>
   <name>linkwallet-extention-keypair-api</name>
   <description>linkwallet-extention-keypair-api</description>
   
@@ -30,13 +30,13 @@
        <dependency>
         <groupId>org.youcredential.identity</groupId>
         <artifactId>youcredential-identity-admin-api-main-configuration</artifactId>  
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.3.0</version>
       </dependency>      
 <!--    implementation(project(":extensions:api:identity-api:validators:keypair-validators"))-->
        <dependency>
         <groupId>org.youcredential.identity</groupId>
         <artifactId>youcredential-identity-admin-lib-validator-keypair</artifactId>  
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.3.0</version>
       </dependency>       
 <!--    implementation(libs.edc.spi.web)
     edc-spi-web = { module = "org.eclipse.edc:web-spi", version.ref = "edc" }-->

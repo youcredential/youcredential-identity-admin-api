@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.identity</groupId>
   <artifactId>youcredential-identity-admin-api-main-authorization</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3.0</version>
   <name>linkwallet-extention-identityhub-api-authorization</name>
   <description>linkwallet-extention-identityhub-api-authorization</description>
   
