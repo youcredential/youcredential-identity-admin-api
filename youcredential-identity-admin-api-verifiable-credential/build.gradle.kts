@@ -1,3 +1,7 @@
+/*
+ * \extensions\api\identity-api\verifiable-credentials-api
+ */
+
 plugins {
     `java-library`
     `maven-publish`
