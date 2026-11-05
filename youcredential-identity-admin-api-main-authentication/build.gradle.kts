@@ -9,7 +9,7 @@
  *
  *  Contributors:
  *       Metaform Systems, Inc. - initial API and implementation
- *
+ * \extensions\api\identityhub-api-authentication
  */
 
 plugins {
