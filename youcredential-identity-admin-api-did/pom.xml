@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.identity</groupId>
+  <artifactId>youcredential-identity-admin-api-did</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <name>linkwallet-admin-identity-api-did</name>
+  <description>linkwallet-extention-did-api</description>
+  
+  <dependencies>
+<!--
+    api(libs.edc.spi.core)
+    api(project(":spi:identity-hub-spi"))
+    api(project(":spi:did-spi"))
+    implementation(project(":extensions:api:identity-api:identity-api-configuration"))
+    implementation(libs.edc.spi.validator)
+    implementation(libs.edc.spi.web)
+    implementation(libs.edc.lib.jerseyproviders)
+    implementation(libs.jakarta.rsApi)
+    implementation(libs.jakarta.annotation)
+
+    testImplementation(libs.edc.junit)
+    testImplementation(libs.edc.jsonld)
+    testImplementation(testFixtures(libs.edc.core.jersey))
+    testImplementation(testFixtures(project(":spi:identity-hub-spi")))
+    testImplementation(libs.nimbus.jwt)
+    testImplementation(libs.restAssured)  
+-->  
+<!--    api(libs.edc.spi.core)
+    edc-spi-core = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>core-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>      
+<!--    api(project(":spi:identity-hub-spi"))-->
+      <dependency>
+        <groupId>com.linkwallet.core</groupId>
+        <artifactId>linkwallet-core-spi</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>       
+<!--    api(project(":spi:did-spi"))-->
+       <dependency>
+        <groupId>com.linkwallet.core</groupId>
+        <artifactId>linkwallet-core-spi-did</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>    
+<!--    implementation(project(":extensions:api:identity-api:identity-api-configuration"))     -->
+       <dependency>
+        <groupId>org.youcredential.identity</groupId>
+        <artifactId>youcredential-identity-admin-api-main-configuration</artifactId>  
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>  
+<!--    implementation(libs.edc.spi.validator)
+edc-spi-validator = { module = "org.eclipse.edc:validator-spi", version.ref = "edc" }   --> 
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>validator-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>     
+<!--    implementation(libs.edc.spi.web)    
+    edc-spi-web = { module = "org.eclipse.edc:web-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>web-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>  
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>auth-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>                        
+<!--    implementation(libs.edc.lib.jerseyproviders)
+edc-lib-jerseyproviders = { module = "org.eclipse.edc:jersey-providers-lib", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>jersey-providers-lib</artifactId> 
+        <version>0.18.0</version>
+      </dependency>     
+<!--    implementation(libs.jakarta.rsApi)
+    jakarta-rsApi = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "rsApi" }-->
+      <dependency>
+        <groupId>jakarta.ws.rs</groupId>
+        <artifactId>jakarta.ws.rs-api</artifactId>
+        <version>4.0.0</version>
+      </dependency>     
+<!--    implementation(libs.jakarta.annotation)
+jakarta-annotation = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotation" }    -->
+      <dependency>
+        <groupId>jakarta.annotation</groupId>
+        <artifactId>jakarta.annotation-api</artifactId>
+        <version>3.0.0</version>
+      </dependency>         
+
+<!--    testImplementation(libs.edc.junit)
+edc-junit = { module = "org.eclipse.edc:junit", version.ref = "edc" }--> 
+       <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>junit</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>
+      </dependency>          
+<!--    testImplementation(libs.edc.jsonld)
+    edc-jsonld = { module = "org.eclipse.edc:json-ld", version.ref = "edc" }-->
+       <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>json-ld</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>
+      </dependency>        
+<!--    testImplementation(testFixtures(libs.edc.core.jersey))
+ edc-core-jersey = { module = "org.eclipse.edc:jersey-core", version.ref = "edc" }   -->
+       <dependency>
+        <groupId>org.eclipse.edc</groupId> 
+        <artifactId>jersey-core</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>
+      </dependency>            
+<!--    testImplementation(testFixtures(project(":spi:identity-hub-spi")))-->       
+<!--    testImplementation(libs.nimbus.jwt)
+nimbus-jwt = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbus" }    -->
+       <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>10.9.1</version>
+        <scope>test</scope>
+      </dependency>       
+<!--    testImplementation(libs.restAssured)  
+restAssured = { module = "io.rest-assured:rest-assured", version.ref = "restAssured" }-->
+       <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>rest-assured</artifactId>
+        <version>6.0.0</version>
+        <scope>test</scope>
+      </dependency>         
+  </dependencies>  
+</project>
