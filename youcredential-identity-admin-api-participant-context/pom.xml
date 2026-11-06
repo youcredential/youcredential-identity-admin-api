@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.identity</groupId>
+  <artifactId>youcredential-identity-admin-api-participant-context</artifactId>
+  <version>0.0.3.0</version>
+  <name>linkwallet-extention-participant-context-api</name>
+  <description>linkwallet-extention-participant-context-api</description>
+  
+  <dependencies>
+<!--    api(libs.edc.spi.core)
+    edc-spi-core = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>core-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>   
+<!--    api(project(":spi:identity-hub-spi"))-->
+      <dependency>
+        <groupId>com.linkwallet.core</groupId>
+        <artifactId>linkwallet-core-spi</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>            
+<!--    implementation(project(":extensions:api:identity-api:identity-api-configuration"))-->
+       <dependency>
+        <groupId>org.youcredential.identity</groupId>
+        <artifactId>youcredential-identity-admin-api-main-configuration</artifactId>  
+        <version>0.0.3.0</version>
+      </dependency>        
+<!--    implementation(project(":extensions:api:identity-api:validators:participant-context-validators"))-->
+       <dependency>
+        <groupId>org.youcredential.identity</groupId>
+        <artifactId>youcredential-identity-admin-lib-validator-participant-context</artifactId>   
+        <version>0.0.3.0</version>
+      </dependency>        
+<!--    implementation(libs.edc.spi.validator)-->
+    
+<!--    implementation(libs.edc.spi.web)
+    edc-spi-web = { module = "org.eclipse.edc:web-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>web-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>          
+<!--    implementation(libs.edc.lib.util)
+    
+    implementation(libs.jakarta.rsApi)
+    
+    implementation(libs.jakarta.annotation)-->
+
+
+<!--    testImplementation(libs.edc.junit)
+    
+    testImplementation(libs.edc.jsonld)
+    
+    testImplementation(testFixtures(libs.edc.core.jersey))
+    
+    testImplementation(libs.nimbus.jwt)
+    
+    testImplementation(libs.restAssured)
+    
+    testImplementation(libs.tink)  -->
+    
+  </dependencies>  
+</project>

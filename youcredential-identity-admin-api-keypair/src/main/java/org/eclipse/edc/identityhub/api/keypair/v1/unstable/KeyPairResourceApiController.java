@@ -1,0 +1,133 @@
+/*
+ *  Copyright (c) 2024 Metaform Systems, Inc.
+ *
+ *  This program and the accompanying materials are made available under the
+ *  terms of the Apache License, Version 2.0 which is available at
+ *  https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  SPDX-License-Identifier: Apache-2.0
+ *
+ *  Contributors:
+ *       Metaform Systems, Inc. - initial API and implementation
+ *
+ */
+
+package org.eclipse.edc.identityhub.api.keypair.v1.unstable;
+
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.SecurityContext;
+import org.eclipse.edc.api.auth.spi.AuthorizationService;
+import org.eclipse.edc.api.auth.spi.RequiredScope;
+import org.eclipse.edc.identityhub.api.Versions;
+import org.eclipse.edc.identityhub.api.keypair.validation.KeyDescriptorValidator;
+import org.eclipse.edc.identityhub.spi.keypair.KeyPairService;
+import org.eclipse.edc.identityhub.spi.keypair.model.KeyPairResource;
+import org.eclipse.edc.identityhub.spi.participantcontext.model.IdentityHubParticipantContext;
+import org.eclipse.edc.identityhub.spi.participantcontext.model.KeyDescriptor;
+import org.eclipse.edc.spi.EdcException;
+import org.eclipse.edc.web.spi.exception.ObjectNotFoundException;
+import org.eclipse.edc.web.spi.exception.ValidationFailureException;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Collection;
+
+import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
+import static org.eclipse.edc.identityhub.spi.authorization.AuthorizationResultHandler.exceptionMapper;
+import static org.eclipse.edc.participantcontext.spi.types.ParticipantResource.queryByParticipantContextId;
+
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+@Path(Versions.UNSTABLE + "/participants/{participantContextId}/keypairs")
+public class KeyPairResourceApiController implements KeyPairResourceApi {
+
+    private final AuthorizationService authorizationService;
+    private final KeyPairService keyPairService;
+    private final KeyDescriptorValidator keyDescriptorValidator;
+
+    public KeyPairResourceApiController(AuthorizationService authorizationService, KeyPairService keyPairService, KeyDescriptorValidator keyDescriptorValidator) {
+        this.authorizationService = authorizationService;
+        this.keyPairService = keyPairService;
+        this.keyDescriptorValidator = keyDescriptorValidator;
+    }
+
+    @GET
+    @Path("/{keyPairId}")
+    @RequiredScope("identity-api:keypairs:read")
+    @Override
+    public KeyPairResource getKeyPair(@PathParam("participantContextId") String participantContextId, @PathParam("keyPairId") String id, @Context SecurityContext securityContext) {
+        authorizationService.authorize(securityContext, participantContextId, id, KeyPairResource.class).orElseThrow(exceptionMapper(KeyPairResource.class, id));
+
+        var result = keyPairService.query(KeyPairResource.queryById(id).build())
+                .orElseThrow(exceptionMapper(KeyPairResource.class, id));
+        if (result.isEmpty()) {
+            throw new ObjectNotFoundException(KeyPairResource.class, id);
+        }
+        if (result.size() > 1) {
+            throw new EdcException("Expected only 1 result, but got %s".formatted(result.size()));
+        }
+        return result.iterator().next();
+    }
+
+    @GET
+    @RequiredScope("identity-api:keypairs:read")
+    @Override
+    public Collection<KeyPairResource> queryKeyPairByParticipantContextId(@PathParam("participantContextId") String participantContextId, @Context SecurityContext securityContext) {
+
+        var query = queryByParticipantContextId(participantContextId).build();
+        return keyPairService.query(query).orElseThrow(exceptionMapper(KeyPairResource.class, participantContextId)).stream()
+                .filter(kpr -> authorizationService.authorize(securityContext, participantContextId, kpr.getId(), KeyPairResource.class).succeeded()).toList();
+    }
+
+    @PUT
+    @RequiredScope("identity-api:keypairs:write")
+    @Override
+    public void addKeyPair(@PathParam("participantContextId") String participantContextId, KeyDescriptor keyDescriptor, @QueryParam("makeDefault") boolean makeDefault, @Context SecurityContext securityContext) {
+        keyDescriptorValidator.validate(keyDescriptor).orElseThrow(ValidationFailureException::new);
+
+        authorizationService.authorize(securityContext, participantContextId, participantContextId, IdentityHubParticipantContext.class)
+                .compose(u -> keyPairService.addKeyPair(participantContextId, keyDescriptor, makeDefault))
+                .orElseThrow(exceptionMapper(KeyPairResource.class));
+    }
+
+    @POST
+    @Path("/{keyPairId}/activate")
+    @RequiredScope("identity-api:keypairs:write")
+    @Override
+    public void activateKeyPair(@PathParam("participantContextId") String participantContextId, @PathParam("keyPairId") String keyPairResourceId, @Context SecurityContext context) {
+        authorizationService.authorize(context, participantContextId, keyPairResourceId, KeyPairResource.class)
+                .compose(u -> keyPairService.activate(keyPairResourceId)).orElseThrow(exceptionMapper(KeyPairResource.class, keyPairResourceId));
+
+    }
+
+    @POST
+    @Path("/{keyPairId}/rotate")
+    @RequiredScope("identity-api:keypairs:write")
+    @Override
+    public void rotateKeyPair(@PathParam("participantContextId") String participantContextId, @PathParam("keyPairId") String keyPairId, @Nullable KeyDescriptor newKey, @QueryParam("duration") long duration, @Context SecurityContext securityContext) {
+        if (newKey != null) {
+            keyDescriptorValidator.validate(newKey).orElseThrow(ValidationFailureException::new);
+        }
+        authorizationService.authorize(securityContext, participantContextId, keyPairId, KeyPairResource.class)
+                .compose(u -> keyPairService.rotateKeyPair(keyPairId, newKey, duration)).orElseThrow(exceptionMapper(KeyPairResource.class, keyPairId));
+    }
+
+    @POST
+    @Path("/{keyPairId}/revoke")
+    @RequiredScope("identity-api:keypairs:write")
+    @Override
+    public void revokeKeyPair(@PathParam("participantContextId") String participantContextId, @PathParam("keyPairId") String id, KeyDescriptor newKey, @Context SecurityContext securityContext) {
+        if (newKey != null) {
+            keyDescriptorValidator.validate(newKey).orElseThrow(ValidationFailureException::new);
+        }
+        authorizationService.authorize(securityContext, participantContextId, id, KeyPairResource.class)
+                .compose(u -> keyPairService.revokeKey(id, newKey)).orElseThrow(exceptionMapper(KeyPairResource.class, id));
+    }
+}

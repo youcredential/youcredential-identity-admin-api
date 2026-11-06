@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.identity</groupId>
+  <artifactId>youcredential-identity-admin-lib-validator-verifiable-credential</artifactId>
+  <version>0.0.3.0</version>
+  <name>linkwallet-extention-verifiable-credential-validators</name>
+  <description>linkwallet-extention-verifiable-credential-validators</description>
+  
+  <dependencies>
+<!--    api(libs.edc.spi.validator)
+edc-spi-validator = { module = "org.eclipse.edc:validator-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>validator-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>   
+<!--    api(project(":spi:verifiable-credential-spi"))-->
+      <dependency>
+        <groupId>com.linkwallet.core</groupId>
+        <artifactId>linkwallet-core-spi-verifiable-credential</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency> 
+<!--    implementation(libs.edc.lib.util)
+edc-lib-util = { module = "org.eclipse.edc:util-lib", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>util-lib</artifactId>
+        <version>0.18.0</version>
+      </dependency>   
+
+<!--    testImplementation(libs.edc.junit)  -->
+  </dependencies>  
+</project>
