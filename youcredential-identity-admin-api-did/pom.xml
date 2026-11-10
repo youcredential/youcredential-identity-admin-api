@@ -34,15 +34,15 @@
       </dependency>      
 <!--    api(project(":spi:identity-hub-spi"))-->
       <dependency>
-        <groupId>com.linkwallet.core</groupId>
-        <artifactId>linkwallet-core-spi</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-common</artifactId>
+        <version>0.0.3.0</version>
       </dependency>       
 <!--    api(project(":spi:did-spi"))-->
        <dependency>
-        <groupId>com.linkwallet.core</groupId>
-        <artifactId>linkwallet-core-spi-did</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-did</artifactId>
+        <version>0.0.3.0</version>
       </dependency>    
 <!--    implementation(project(":extensions:api:identity-api:identity-api-configuration"))     -->
        <dependency>

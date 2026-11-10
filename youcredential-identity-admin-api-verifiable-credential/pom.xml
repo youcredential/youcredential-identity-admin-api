@@ -9,15 +9,15 @@
   <dependencies>
 <!--    api(project(":spi:verifiable-credential-spi"))-->
       <dependency>
-        <groupId>com.linkwallet.core</groupId>
-        <artifactId>linkwallet-core-spi-verifiable-credential</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-verifiable-credential</artifactId>
+        <version>0.0.3.0</version>
       </dependency>
 <!--    implementation(project(":extensions:api:identity-api:identity-api-configuration")) -->
       <dependency>
         <groupId>org.youcredential.identity</groupId>
         <artifactId>youcredential-identity-admin-api-main-configuration</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.4-SNAPSHOT</version>
       </dependency>   
 <!--    implementation(project(":extensions:api:identity-api:validators:verifiable-credential-validators"))-->
       <dependency>

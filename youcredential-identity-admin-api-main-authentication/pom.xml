@@ -34,9 +34,9 @@
       </dependency>  -->
 <!--    implementation(project(":extensions:api:lib:identityhub-api-authentication-lib"))-->
       <dependency>
-        <groupId>com.linkwallet.admin</groupId>
-        <artifactId>linkwallet-admin-core-lib-authentication</artifactId>
-        <version>0.0.4-SNAPSHOT</version>
+        <groupId>org.youcredential.admin</groupId>
+        <artifactId>youcredential-admin-core-lib-authentication</artifactId>
+        <version>0.0.3.0</version>
       </dependency>  
 <!--    implementation(libs.edc.lib.oauth2.authz)
 edc-lib-oauth2-authz = { module = "org.eclipse.edc:auth-authorization-oauth2-lib", version.ref = "edc" }-->

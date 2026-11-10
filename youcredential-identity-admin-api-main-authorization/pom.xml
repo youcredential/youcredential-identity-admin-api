@@ -16,9 +16,9 @@
       </dependency>      
 <!--    api(project(":spi:identity-hub-spi"))-->
       <dependency>
-        <groupId>com.linkwallet.core</groupId>
-        <artifactId>linkwallet-core-spi</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-common</artifactId>
+        <version>0.0.3.0</version>
       </dependency>    
 <!--    implementation(libs.edc.lib.oauth2.authz)
 edc-lib-oauth2-authz = { module = "org.eclipse.edc:auth-authorization-oauth2-lib", version.ref = "edc" }-->

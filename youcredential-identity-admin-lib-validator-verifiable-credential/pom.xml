@@ -16,9 +16,9 @@ edc-spi-validator = { module = "org.eclipse.edc:validator-spi", version.ref = "e
       </dependency>   
 <!--    api(project(":spi:verifiable-credential-spi"))-->
       <dependency>
-        <groupId>com.linkwallet.core</groupId>
-        <artifactId>linkwallet-core-spi-verifiable-credential</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-verifiable-credential</artifactId>
+        <version>0.0.3.0</version>
       </dependency> 
 <!--    implementation(libs.edc.lib.util)
 edc-lib-util = { module = "org.eclipse.edc:util-lib", version.ref = "edc" }-->
