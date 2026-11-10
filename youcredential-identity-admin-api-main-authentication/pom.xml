@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.identity</groupId>
   <artifactId>youcredential-identity-admin-api-main-authentication</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.4-SNAPSHOT</version>
   <name>linkwallet-extention-identityhub-api-authentication</name>
   <description>linkwallet-extention-identityhub-api-authentication</description>
   
@@ -36,7 +36,7 @@
       <dependency>
         <groupId>com.linkwallet.admin</groupId>
         <artifactId>linkwallet-admin-core-lib-authentication</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.4-SNAPSHOT</version>
       </dependency>  
 <!--    implementation(libs.edc.lib.oauth2.authz)
 edc-lib-oauth2-authz = { module = "org.eclipse.edc:auth-authorization-oauth2-lib", version.ref = "edc" }-->

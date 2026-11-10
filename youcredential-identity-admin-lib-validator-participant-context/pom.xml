@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.identity</groupId>
   <artifactId>youcredential-identity-admin-lib-validator-participant-context</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.4-SNAPSHOT</version>
   <name>linkwallet-extention-participant-context-validators</name>
   <description>linkwallet-extention-participant-context-validators</description>
   
@@ -11,7 +11,7 @@
       <dependency>
         <groupId>org.youcredential.identity</groupId>
         <artifactId>youcredential-identity-admin-lib-validator-keypair</artifactId> 
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.4-SNAPSHOT</version>
       </dependency> 
 <!--    implementation(libs.edc.lib.util) 
 edc-lib-util = { module = "org.eclipse.edc:util-lib", version.ref = "edc" }-->
